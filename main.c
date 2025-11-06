@@ -3,20 +3,18 @@
 
 void main(void) {
      FILE *fp = NULL;
-     char word[50];
-     int i;
+     char c;
      
-     fp = fopen("sample.txt", "w");
+     fp = fopen("sample.txt", "r");
      
-     for (i=0; i<3; i++) {
-         printf("input a word: ");
-         scanf("%s", word);
-         fprintf(fp, "%s\n", word);
-         }
-         
+     if(fp == NULL)
+           printf("파일을 못열음\n");
+           
+     while ((c = fgetc(fp)) != EOF) {
+           putchar(c);
+           }
+
      fclose(fp);
-     
-     printf("3개의 단어를 sample.txt에 저장했습니다.\n");
       
      system("PAUSE");
      return 0;
